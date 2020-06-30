@@ -1,4 +1,4 @@
-package com.sixgroup.appaminsina.User;
+package com.sixgroup.m120.User;
 
 
 import androidx.room.ColumnInfo;

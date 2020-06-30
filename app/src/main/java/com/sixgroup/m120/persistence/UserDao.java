@@ -1,9 +1,9 @@
-package com.sixgroup.appaminsina.persistence;
+package com.sixgroup.m120.persistence;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
-import com.sixgroup.appaminsina.User.User;
+import com.sixgroup.m120.User.User;
 
 //creating a User Data Object
 @Dao

@@ -1,4 +1,4 @@
-package com.sixgroup.appaminsina.activities;
+package com.sixgroup.m120.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.sixgroup.appaminsina.User.User;
-import com.sixgroup.appaminsina.persistence.AppDatabase;
-import com.sixgroup.appaminsina.persistence.UserDao;
-import com.sixgroup.appaminsina.R;
+import com.sixgroup.m120.User.User;
+import com.sixgroup.m120.persistence.AppDatabase;
+import com.sixgroup.m120.persistence.UserDao;
+import com.sixgroup.m120.R;
 
 
 //Class that opens first activity, which is the Login

@@ -1,10 +1,10 @@
-package com.sixgroup.appaminsina.persistence;
+package com.sixgroup.m120.persistence;
 
 import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import com.sixgroup.appaminsina.User.User;
+import com.sixgroup.m120.User.User;
 
 
 //class that generates Database

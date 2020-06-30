@@ -1,4 +1,4 @@
-package com.sixgroup.appaminsina.activities;
+package com.sixgroup.m120.activities;
 
 
 import android.content.Intent;
@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.sixgroup.appaminsina.User.User;
-import com.sixgroup.appaminsina.persistence.AppDatabase;
-import com.sixgroup.appaminsina.persistence.UserDao;
-import com.sixgroup.appaminsina.R;
+import com.sixgroup.m120.User.User;
+import com.sixgroup.m120.persistence.AppDatabase;
+import com.sixgroup.m120.persistence.UserDao;
+import com.sixgroup.m120.R;
 
 import java.io.ByteArrayOutputStream;
 

@@ -1,4 +1,4 @@
-package com.sixgroup.appaminsina;
+package com.sixgroup.m120;
 
 import org.junit.Test;
 
