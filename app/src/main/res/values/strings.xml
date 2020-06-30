@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Noa Login</string>
+    <string name="buttonLogin">Login</string>
+    <string name="buttonRegistrieren">Registrieren</string>
+    <string name="buttonHochladen">Hochladen</string>
+    <string name="buttonZuRegistrieren">Kein Account? \n hier registrieren</string>
+    <string name="buttonUeberspringen">Überspringen</string>
+    <string name="editTextEmail">Email</string>
+    <string name="editTextPassword">Passwort</string>
+    <string name="pictureAltText">Profile Picture</string>
+    <string name="fotoHochladen">Foto Hochladen</string>
+    <string name="willkommen">Herzlich Willkommen</string>
+    <string name="textViewZuRegistrieren"> Kein Account? \n hier registrieren</string>
+    <string name="editTextPasswordBestaetigen">Passwort bestätigen</string>
+    <string name="textViewRegistrierem">Registrieren</string>
+    <string name="editTextVorname">Vorname</string>
+    <string name="editTextNachname">Nachname</string>
+    <string name="textViewZuLogin"> Du hast ein Konto? \n Melde dich an</string>
+    <string name="vorname"></string>
+    <string name="nachname"></string>
+    <string name="buttonLogout">Logout</string>
+
+</resources>
