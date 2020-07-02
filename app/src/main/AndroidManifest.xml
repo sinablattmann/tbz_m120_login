@@ -17,14 +17,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.sixgroup.m120.activities.RegisterActivity">
-        </activity>
+        <activity android:name="com.sixgroup.m120.activities.RegisterActivity"/>
 
-        <activity android:name="com.sixgroup.m120.activities.WelcomeActivity">
-        </activity>
+        <activity android:name="com.sixgroup.m120.activities.WelcomeActivity"/>
 
-        <activity android:name="com.sixgroup.m120.activities.UploadPictureActivity">
-        </activity>
+        <activity android:name="com.sixgroup.m120.activities.UploadPictureActivity"/>
+
+        <activity android:name="com.sixgroup.m120.activities.UserListActivity"/>
+
+        <activity android:name="com.sixgroup.m120.activities.UserdataActivity"/>
 
     </application>
 </manifest>

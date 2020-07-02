@@ -3,7 +3,8 @@ package com.sixgroup.m120.persistence;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
-import com.sixgroup.m120.User.User;
+
+import java.util.List;
 
 //creating a User Data Object
 @Dao
@@ -16,4 +17,10 @@ public interface UserDao {
     //writing query for inserting all users
     @Insert
     void insertUser(User user);
+
+    @Query("SELECT * FROM user")
+    List<User> getAll();
+
+    @Query("SELECT * FROM user WHERE id = :apprenticeId")
+    User getById(long apprenticeId);
 }

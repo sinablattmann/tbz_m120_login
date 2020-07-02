@@ -8,25 +8,16 @@
 
     <TextView
         android:id="@+id/willkommen"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="64dp"
-        android:layout_marginBottom="64dp"
+        android:layout_width="224dp"
+        android:layout_height="56dp"
+        android:gravity="center"
         android:text="@string/willkommen"
         android:textColor="#000000"
         android:textSize="36sp"
-        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -39,29 +30,34 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:srcCompat="@drawable/pfp" />
 
-    <TextView
-        android:id="@+id/textViewFirstnameWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="166dp"
-        android:layout_marginBottom="70dp"
-        android:text="@string/vorname"
-        android:textColor="@color/blackColor"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/buttonLogout"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:background="@color/blueColor"
         android:onClick="goToLogin"
         android:text="@string/buttonLogout"
         android:textColor="@color/blackColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonLogout2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/buttonLogout2"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@color/blueColor"
+        android:onClick="goToList"
+        android:text="@string/benutzerListe"
+        android:textColor="@color/blackColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonLogout"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.504" />
 </androidx.constraintlayout.widget.ConstraintLayout>

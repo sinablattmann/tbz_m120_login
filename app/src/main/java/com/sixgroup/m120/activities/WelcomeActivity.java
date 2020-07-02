@@ -7,10 +7,10 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.sixgroup.m120.User.User;
+import com.sixgroup.m120.persistence.User;
 import com.sixgroup.m120.persistence.AppDatabase;
 import com.sixgroup.m120.persistence.UserDao;
 import com.sixgroup.m120.R;
@@ -27,9 +27,6 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        //creating TextViews for the first- and lastname
-        TextView textViewFirstnameWelcome = findViewById(R.id.textViewFirstnameWelcome);
-        TextView textViewLastnameWelcome = findViewById(R.id.textViewLastnameWelcome);
         ImageView imageViewPicture = findViewById(R.id.imageView);
         UserDao userDao;
 
@@ -46,13 +43,16 @@ public class WelcomeActivity extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeByteArray(user.getImage(), 0, user.getImage().length);
             imageViewPicture.setImageBitmap(bitmap);
         }
-        textViewFirstnameWelcome.setText(user.getVorname());
-        textViewLastnameWelcome.setText(user.getNachname());
     }
 
     //changes activity to "activity_login"
     public void goToLogin (View view){
         Intent intent = new Intent (this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToList (View view) {
+        Intent intent = new Intent(this, UserListActivity.class);
         startActivity(intent);
     }
 }

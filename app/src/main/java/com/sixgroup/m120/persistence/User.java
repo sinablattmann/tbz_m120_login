@@ -1,4 +1,4 @@
-package com.sixgroup.m120.User;
+package com.sixgroup.m120.persistence;
 
 
 import androidx.room.ColumnInfo;

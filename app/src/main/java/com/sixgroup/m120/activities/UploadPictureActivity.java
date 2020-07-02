@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.sixgroup.m120.User.User;
+import com.sixgroup.m120.persistence.User;
 import com.sixgroup.m120.persistence.AppDatabase;
 import com.sixgroup.m120.persistence.UserDao;
 import com.sixgroup.m120.R;
