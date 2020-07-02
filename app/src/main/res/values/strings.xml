@@ -9,7 +9,7 @@
     <string name="editTextPassword">Passwort</string>
     <string name="pictureAltText">Profile Picture</string>
     <string name="fotoHochladen">Foto Hochladen</string>
-    <string name="willkommen">Herzlich Willkommen</string>
+    <string name="willkommen">Willkommen</string>
     <string name="textViewZuRegistrieren"> Kein Account? \n hier registrieren</string>
     <string name="editTextPasswordBestaetigen">Passwort bestätigen</string>
     <string name="textViewRegistrierem">Registrieren</string>
