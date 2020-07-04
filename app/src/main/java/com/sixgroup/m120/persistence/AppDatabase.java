@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase;
 
 
 //class that generates Database
-@Database(entities = {User.class}, version = 2, exportSchema = false)
+@Database(entities = {User.class}, version = 3, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     //creating a Database

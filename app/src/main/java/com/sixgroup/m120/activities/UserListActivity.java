@@ -35,14 +35,6 @@ public class UserListActivity extends AppCompatActivity implements UserAdapter.O
         userDao = AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
 
         loadList();
-
-        /*Button createApprenticeButton = findViewById(R.id.apprenticelist_createApprenticeButton);
-        createApprenticeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNewApprentice();
-            }
-        });*/
     }
 
     @Override
@@ -78,12 +70,4 @@ public class UserListActivity extends AppCompatActivity implements UserAdapter.O
         intent.putExtra(EXTRA_APPRENTICE_ID, user.getId());
         startActivity(intent);
     }
-
-    /**
-     * Opens Activity with form for creating a new apprentice
-     *
-    private void openNewApprentice() {
-        Intent intend = new Intent(this, NewApprenticeActivity.class);
-        startActivity(intend);
-    }*/
 }

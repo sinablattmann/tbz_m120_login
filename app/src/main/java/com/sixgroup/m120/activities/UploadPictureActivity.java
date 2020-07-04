@@ -1,14 +1,24 @@
 package com.sixgroup.m120.activities;
 
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import com.sixgroup.m120.persistence.User;
 import com.sixgroup.m120.persistence.AppDatabase;
@@ -16,6 +26,12 @@ import com.sixgroup.m120.persistence.UserDao;
 import com.sixgroup.m120.R;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 //Class that opens the activity in which you can upload photos
 public class UploadPictureActivity extends AppCompatActivity {
@@ -27,7 +43,14 @@ public class UploadPictureActivity extends AppCompatActivity {
     private UserDao userDao;
 
     // Define the button and imageview type variable
+    private static final String PROVIDER_PATH = "ch.noseryoung.lernendeverwaltung.provider";
+    private static final String TAG = "NewApprenticeActivity";
+    private String currentPhotoName;
+
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView click_image_id;
+    private Uri currentPhotoUri;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,26 +61,86 @@ public class UploadPictureActivity extends AppCompatActivity {
         //set Dao
         userDao = AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
 
-        // By ID we can get each component
-        // which id is assigned in XML file
-        // get Buttons and imageview.
-        click_image_id = findViewById(R.id.profilePic);
-
-
-        // Camera_open button is for open the camera
-        // and add the setOnClickListener in this button
-        click_image_id.setOnClickListener(new View.OnClickListener() {
-
+        // OnClickListener that opens camera
+        Button photoButton = findViewById(R.id.newApprentice_photoButton);
+        photoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(takePictureIntent, pic_id);
-                }
-
+                openCamera();
             }
         });
+
+        // OnClickListener if picture was taken, the picture opens up in fullscreen, else the camera is opened
+        CircleImageView apprenticePhoto = findViewById(R.id.newApprentice_apprenticePhoto);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA},
+                    0);
+        }
+        apprenticePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentPhotoUri == null) {
+                    openCamera();
+                } else {
+                    //openFullscreenApprenticePhoto();
+                }
+            }
+        });
+    }
+
+    private void openCamera() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+
+            File imageFile = null;
+            try {
+                // Image file is created with the createImageFile() method
+                imageFile = createImageFile();
+            } catch (IOException ex) {
+                Log.e(TAG, "Error occurred while creating the File");
+            }
+
+            if (imageFile != null) {
+                Context context = getApplicationContext();
+                currentPhotoUri = FileProvider.getUriForFile(
+                        context, PROVIDER_PATH, imageFile);
+
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, currentPhotoUri);
+                takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            }
+        }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        ImageView photo = findViewById(R.id.newApprentice_apprenticePhoto);
+
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_IMAGE_CAPTURE) {
+                photo.setImageURI(currentPhotoUri);
+            }
+        } else {
+            // When the picture hasn't been taken, the apprentice has no picture
+            currentPhotoUri = null;
+            currentPhotoName = null;
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_LernendeFoto_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,        // Filename without extension
+                ".jpg",         // File extension
+                storageDir      // Directory, where file should be saved
+        );
+        currentPhotoName = image.getName();
+        return image;
     }
 
     public void goToWelcomeActivity(View view){
@@ -65,17 +148,6 @@ public class UploadPictureActivity extends AppCompatActivity {
         saveToDatabase(intent);
 
         startActivity(intent);
-    }
-
-    // This method will help to retrieve the image
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == pic_id && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            click_image_id.setImageBitmap(imageBitmap);
-        }
     }
 
     //saves data into database with no image
@@ -86,25 +158,13 @@ public class UploadPictureActivity extends AppCompatActivity {
         String email = getIntent().getStringExtra(getString(R.string.editTextEmail));
         String password = getIntent().getStringExtra(getString(R.string.editTextPassword));
 
-        ImageView image = findViewById(R.id.profilePic);
-        Bitmap imageBitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
-        byte[] img;
         User user;
 
-        if(imageBitmap != null) {
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-            img = bos.toByteArray();
-            user = new User(firstName, lastName, email, password, img);
-        } else {
-            user = new User(firstName, lastName, email, password, null);
+        if (currentPhotoName == null || currentPhotoName.trim().length() == 0) {
+            currentPhotoName = "none";
         }
-
-        intent.putExtra(getString(R.string.editTextEmail), email);
-
-        userDao.insertUser(user);
-
-
+        userDao.insertUser(new User(firstName, lastName, email, password, currentPhotoName));
+        finish();
     }
 
 }
