@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Noa Login</string>
+    <string name="app_name">Login</string>
     <string name="buttonLogin">Login</string>
     <string name="buttonRegistrieren">Registrieren</string>
     <string name="buttonHochladen">Hochladen</string>
@@ -11,12 +11,12 @@
     <string name="fotoHochladen">Foto Hochladen</string>
     <string name="willkommen">Willkommen</string>
     <string name="benutzerListe">Benutzerliste</string>
-    <string name="textViewZuRegistrieren"> Kein Account? \n hier registrieren</string>
+    <string name="textViewZuRegistrieren">\ Kein Account?\nHier registrieren</string>
     <string name="editTextPasswordBestaetigen">Passwort bestätigen</string>
     <string name="textViewRegistrierem">Registrieren</string>
     <string name="editTextVorname">Vorname</string>
     <string name="editTextNachname">Nachname</string>
-    <string name="textViewZuLogin"> Du hast ein Konto? \n Melde dich an</string>
+    <string name="textViewZuLogin"> Du hast ein Konto? \n\ \ \ \ Melde dich an</string>
     <string name="fragmentBeschreibung">Ein Eintrag innerhalb der Liste</string>
     <string name="listenFotoBeschreibung">Das Profilbild in einem Listeneintrag</string>
     <string name="erstelleBenutzer">Erstelle Benutzer</string>
