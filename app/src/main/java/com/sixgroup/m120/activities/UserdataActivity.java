@@ -35,9 +35,6 @@ public class UserdataActivity extends AppCompatActivity {
         // Database connection
         UserDao apprenticeDao = AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
 
-        // Returns picture by name depending on the string given to it
-        //pprenticeImageViewManager apprenticeImageViewManager = new ApprenticeImageViewManager(this);
-
         TextView firstnameTextView = findViewById(R.id.apprenticedata_firstname);
         TextView lastnameTextView = findViewById(R.id.apprenticedata_lastname);
         CircleImageView apprenticePhoto = findViewById(R.id.apprenticedata_apprenticePhoto);
@@ -51,16 +48,6 @@ public class UserdataActivity extends AppCompatActivity {
             firstnameTextView.setText(selectedUser.getVorname());
             lastnameTextView.setText(selectedUser.getNachname());
 
-            //Bitmap apprenticePhotoBitmap = apprenticeImageViewManager.getApprenticePhotoAsBitmap(selectedApprentice.getPicture());
-            //apprenticePhoto.setImageBitmap(apprenticePhotoBitmap);
-
-            // OnClickListener opens image in fullscreen
-            /*apprenticePhoto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    openFullscreenApprenticePhoto();
-                }
-            });*/
         } catch (NullPointerException nullex) {
             Log.e(TAG, nullex.getMessage() + " --- On getting bundle apprentice id");
         }

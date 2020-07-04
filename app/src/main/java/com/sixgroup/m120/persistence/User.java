@@ -22,19 +22,20 @@ public class User {
 
     private String email;
 
-    private byte[] image;
+    @ColumnInfo(name = "image")
+    private String picture;
 
     //passwort is called password in the database
     @ColumnInfo(name="password")
     private String passwort;
 
     //constructor
-    public User(String vorname, String nachname, String email, String passwort, byte[] image) {
+    public User(String vorname, String nachname, String email, String passwort, String picture) {
         this.vorname = vorname;
         this.nachname = nachname;
         this.email = email;
         this.passwort = passwort;
-        this.image = image;
+        this.picture = picture;
     }
 
     //getters and setters
@@ -78,11 +79,11 @@ public class User {
         this.passwort = passwort;
     }
 
-    public byte[] getImage() {
-        return image;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

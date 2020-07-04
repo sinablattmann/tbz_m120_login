@@ -38,11 +38,6 @@ public class WelcomeActivity extends AppCompatActivity {
         String email = intent.getStringExtra(getString(R.string.editTextEmail));
         User user = userDao.getByEmail(email);
 
-        //set TextViews to the name of the logged in User
-        if(user.getImage() != null) {
-            Bitmap bitmap = BitmapFactory.decodeByteArray(user.getImage(), 0, user.getImage().length);
-            imageViewPicture.setImageBitmap(bitmap);
-        }
     }
 
     //changes activity to "activity_login"
