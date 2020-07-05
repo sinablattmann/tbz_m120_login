@@ -28,8 +28,6 @@
 
         <activity android:name="com.sixgroup.m120.activities.WelcomeActivity"/>
 
-        <activity android:name="com.sixgroup.m120.activities.UploadPictureActivity"/>
-
         <activity android:name="com.sixgroup.m120.activities.UserListActivity"/>
 
         <activity android:name="com.sixgroup.m120.activities.UserdataActivity"/>
