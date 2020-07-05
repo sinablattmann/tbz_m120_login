@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.sixgroup.m120.persistence.DataAccess;
 import com.sixgroup.m120.persistence.User;
 import com.sixgroup.m120.persistence.AppDatabase;
 import com.sixgroup.m120.persistence.UserDao;
@@ -18,7 +19,7 @@ import com.sixgroup.m120.R;
 
 //Class that starts, if the User is logged in
 //Welcome Screen with name
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity implements DataAccess {
 
 
     //creates activity
@@ -31,7 +32,7 @@ public class WelcomeActivity extends AppCompatActivity {
         UserDao userDao;
 
         //set Dao
-        userDao = AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
+        userDao = getDataAccess();
 
         //get the User that logged in
         Intent intent = getIntent();
@@ -49,5 +50,10 @@ public class WelcomeActivity extends AppCompatActivity {
     public void goToList (View view) {
         Intent intent = new Intent(this, UserListActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public UserDao getDataAccess() {
+        return AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
     }
 }

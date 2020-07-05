@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.sixgroup.m120.persistence.DataAccess;
 import com.sixgroup.m120.persistence.User;
 import com.sixgroup.m120.persistence.AppDatabase;
 import com.sixgroup.m120.persistence.UserDao;
@@ -13,7 +14,7 @@ import com.sixgroup.m120.R;
 
 
 //Class that opens first activity, which is the Login
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements DataAccess {
 
     //Database connection
     public static UserDao userDao;
@@ -24,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        userDao = AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
+        userDao = getDataAccess();
     }
 
     //changes activity to "activity_register"
@@ -52,5 +53,10 @@ public class LoginActivity extends AppCompatActivity {
         }else{
             editTextEmail.setError("Passwort oder Email ist falsch");
         }
+    }
+
+    @Override
+    public UserDao getDataAccess() {
+        return AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
     }
 }

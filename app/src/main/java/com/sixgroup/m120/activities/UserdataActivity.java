@@ -9,13 +9,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sixgroup.m120.persistence.AppDatabase;
+import com.sixgroup.m120.persistence.DataAccess;
 import com.sixgroup.m120.persistence.User;
 import com.sixgroup.m120.R;
 import com.sixgroup.m120.persistence.UserDao;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UserdataActivity extends AppCompatActivity {
+public class UserdataActivity extends AppCompatActivity implements DataAccess {
     private static final String TAG = "ApprenticedataActivity";
 
     // Apprenticedata which are shown
@@ -33,7 +34,7 @@ public class UserdataActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.informationen);
 
         // Database connection
-        UserDao apprenticeDao = AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
+        UserDao apprenticeDao = getDataAccess();
 
         TextView firstnameTextView = findViewById(R.id.apprenticedata_firstname);
         TextView lastnameTextView = findViewById(R.id.apprenticedata_lastname);
@@ -51,5 +52,10 @@ public class UserdataActivity extends AppCompatActivity {
         } catch (NullPointerException nullex) {
             Log.e(TAG, nullex.getMessage() + " --- On getting bundle apprentice id");
         }
+    }
+
+    @Override
+    public UserDao getDataAccess() {
+        return AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
     }
 }

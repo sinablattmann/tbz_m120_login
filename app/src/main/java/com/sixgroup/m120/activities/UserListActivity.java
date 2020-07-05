@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sixgroup.m120.R;
 import com.sixgroup.m120.adapter.UserAdapter;
+import com.sixgroup.m120.persistence.DataAccess;
 import com.sixgroup.m120.persistence.User;
 import com.sixgroup.m120.persistence.AppDatabase;
 import com.sixgroup.m120.persistence.UserDao;
@@ -18,7 +19,8 @@ import com.sixgroup.m120.persistence.UserDao;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserListActivity extends AppCompatActivity implements UserAdapter.OnListItemClickListener {
+public class UserListActivity extends AppCompatActivity implements UserAdapter.OnListItemClickListener, DataAccess {
+
 
     public static final String EXTRA_APPRENTICE_ID = "ch.noseryoung.lernendeverwaltung.activity.EXTRA_APPRENTICE_ID";
 
@@ -32,7 +34,7 @@ public class UserListActivity extends AppCompatActivity implements UserAdapter.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        userDao = AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
+        userDao = getDataAccess();
 
         loadList();
     }
@@ -69,5 +71,10 @@ public class UserListActivity extends AppCompatActivity implements UserAdapter.O
         Intent intent = new Intent(this, UserdataActivity.class);
         intent.putExtra(EXTRA_APPRENTICE_ID, user.getId());
         startActivity(intent);
+    }
+
+    @Override
+    public UserDao getDataAccess() {
+        return AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
     }
 }

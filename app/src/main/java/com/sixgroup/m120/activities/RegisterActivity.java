@@ -10,10 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.sixgroup.m120.R;
 import com.sixgroup.m120.persistence.AppDatabase;
+import com.sixgroup.m120.persistence.DataAccess;
 import com.sixgroup.m120.persistence.User;
 import com.sixgroup.m120.persistence.UserDao;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements DataAccess {
 
     EditText editTextFirstname;
     EditText editTextLastname;
@@ -29,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        userDao = AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
+        userDao = getDataAccess();
 
         buttonRegistrieren = findViewById(R.id.buttonRegistrieren);
         buttonRegistrieren.setEnabled(true);
@@ -135,6 +136,11 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public UserDao getDataAccess() {
+        return AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
     }
 
 }
