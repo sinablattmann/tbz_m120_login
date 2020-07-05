@@ -28,7 +28,7 @@ public class UserdataActivity extends AppCompatActivity implements DataAccess {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_data);
-        getSupportActionBar().setTitle(R.string.informationen);
+        getSupportActionBar().setTitle(R.string.information);
 
         // Database connection
         UserDao userDao = getDataAccess();

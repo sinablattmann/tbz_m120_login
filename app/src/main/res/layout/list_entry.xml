@@ -6,7 +6,7 @@
     android:id="@+id/list_user"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:contentDescription="@string/fragmentBeschreibung"
+    android:contentDescription="@string/fragmentDescription"
     android:background="@drawable/textview_topline">
 
 
@@ -61,7 +61,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:contentDescription="@string/listenFotoBeschreibung"
+        android:contentDescription="@string/listPhotoDescription"
         android:gravity="center"
         android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
