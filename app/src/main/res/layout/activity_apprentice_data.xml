@@ -20,7 +20,7 @@
         android:layout_marginRight="32dp"
         android:background="@drawable/textview_bottomline"
         android:ems="10"
-        android:gravity="start|center_vertical"
+        android:gravity="center"
         android:textColor="@color/blackColor"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         android:layout_marginRight="32dp"
         android:background="@drawable/textview_bottomline"
         android:ems="10"
-        android:gravity="start|center_vertical"
+        android:gravity="center"
         android:textColor="@color/blackColor"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,40 +47,69 @@
         app:layout_constraintTop_toBottomOf="@+id/apprenticedata_lastnameTextView"
         tools:ignore="LabelFor" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/apprenticedata_apprenticePhoto"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="56dp"
-        android:contentDescription="@string/defaultFotoBeschreibung"
-        android:src="@drawable/account_circle"
+    <TextView
+        android:id="@+id/apprenticedata_lastname2"
+        android:layout_width="347dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/textview_bottomline"
+        android:ems="10"
+        android:gravity="center"
+        android:textColor="@color/blackColor"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/apprenticedata_lastnameTextView2"
+        tools:ignore="LabelFor" />
 
     <TextView
         android:id="@+id/apprenticedata_lastnameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:text="@string/editTextNachname"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/apprenticedata_firstname" />
+
+    <TextView
+        android:id="@+id/apprenticedata_lastnameTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/editTextEmail"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apprenticedata_lastname" />
 
     <TextView
         android:id="@+id/apprenticedata_firstnameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:text="@string/editTextVorname"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/apprenticedata_apprenticePhoto" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:onClick="finish"
+        android:text="return"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apprenticedata_lastname2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

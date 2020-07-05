@@ -38,7 +38,7 @@ public class UserdataActivity extends AppCompatActivity implements DataAccess {
 
         TextView firstnameTextView = findViewById(R.id.apprenticedata_firstname);
         TextView lastnameTextView = findViewById(R.id.apprenticedata_lastname);
-        CircleImageView apprenticePhoto = findViewById(R.id.apprenticedata_apprenticePhoto);
+        TextView emailTextView = findViewById(R.id.apprenticedata_lastname2);
 
         try {
             // Fetch apprentice by given apprentice id in bundle
@@ -48,6 +48,7 @@ public class UserdataActivity extends AppCompatActivity implements DataAccess {
 
             firstnameTextView.setText(selectedUser.getVorname());
             lastnameTextView.setText(selectedUser.getNachname());
+            emailTextView.setText(selectedUser.getEmail());
 
         } catch (NullPointerException nullex) {
             Log.e(TAG, nullex.getMessage() + " --- On getting bundle apprentice id");
@@ -57,5 +58,9 @@ public class UserdataActivity extends AppCompatActivity implements DataAccess {
     @Override
     public UserDao getDataAccess() {
         return AppDatabase.getAppDb(this.getApplicationContext()).getUserDao();
+    }
+
+    public void finish(View view) {
+        finish();
     }
 }

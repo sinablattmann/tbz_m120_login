@@ -25,14 +25,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     private static final String TAG = "ApprenticeAdapter";
 
     private List<User> apprenticeDataset;
-    //private ApprenticeImageViewManager apprenticeImageViewManager;
     private OnListItemClickListener onItemClickListener;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public UserAdapter(List<User> apprenticeDataset, OnListItemClickListener onItemClickListener/*, ApprenticeImageViewManager apprenticeImageViewManager*/) {
+    public UserAdapter(List<User> apprenticeDataset, OnListItemClickListener onItemClickListener) {
         this.apprenticeDataset = apprenticeDataset;
         this.onItemClickListener = onItemClickListener;
-        //this.apprenticeImageViewManager = apprenticeImageViewManager;
     }
 
     // Create new views (invoked by the layout manager)
@@ -56,12 +54,20 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         // - replace the contents of the view with that element
         String firstName = apprenticeDataset.get(position).getVorname();
         String lastName = apprenticeDataset.get(position).getNachname();
-        //String userPhotoName = apprenticeDataset.get(position).getImage();
-        //Bitmap userPhoto = apprenticeImageViewManager.getApprenticePhotoAsBitmap(userPhotoName);
+        String email = apprenticeDataset.get(position).getEmail();
 
-        holder.firstname.setText(firstName);
-        holder.lastname.setText(lastName);
-        //holder.userlistPhoto.setImageBitmap(userPhoto);
+        String initials = getInitials(firstName, lastName);
+
+        holder.fullName.setText(firstName + " " + lastName);
+        holder.email.setText(email);
+        holder.initials.setText(initials);
+    }
+
+    public String getInitials(String firstName, String lastName){
+        char firstLetter = firstName.toUpperCase().charAt(0);
+        char secondLetter = lastName.toUpperCase().charAt(0);
+
+        return firstLetter + "" + secondLetter;
     }
 
     // Return the size of the apprentice dataset (invoked by the layout manager)
@@ -76,27 +82,34 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public static class UserViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         OnListItemClickListener onItemClickListener;
 
-        TextView firstname;
-        TextView lastname;
-        //ImageView userlistPhoto;
+        TextView fullName;
+        TextView email;
+        TextView initials;
 
         UserViewHolder(View v, final OnListItemClickListener onItemclickListener) {
             super(v);
-            //userlistPhoto = v.findViewById(R.id.list_apprentice_userPhoto);
-            firstname = v.findViewById(R.id.list_apprentice_firstnameTextView);
-            lastname = v.findViewById(R.id.list_apprentice_lastnameTextView);
+            fullName = v.findViewById(R.id.list_apprentice_fullNameTextView);
+            email = v.findViewById(R.id.list_apprentice_emailTextView);
+            initials = v.findViewById(R.id.list_apprentice_userPhoto);
 
             this.onItemClickListener = onItemclickListener;
             v.setOnClickListener(this);
 
-            firstname.setOnClickListener(new View.OnClickListener() {
+            fullName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     callItemClickListener();
                 }
             });
 
-            lastname.setOnClickListener(new View.OnClickListener() {
+            email.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callItemClickListener();
+                }
+            });
+
+            initials.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     callItemClickListener();

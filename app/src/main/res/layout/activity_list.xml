@@ -9,44 +9,20 @@
     android:contentDescription="@string/benutzerListenBeschreibung"
     tools:context=".activities.UserListActivity">
 
-    <TextView
-        android:id="@+id/apprenticelist_lastnameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/editTextNachname"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/apprenticelist_apprenticesList"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
-        app:layout_constraintStart_toEndOf="@+id/apprenticelist_firstnameTextView" />
-
-    <TextView
-        android:id="@+id/apprenticelist_firstnameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/editTextVorname"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/apprenticelist_apprenticesList"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.273"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/apprenticelist_apprenticesList"
         android:layout_width="401dp"
         android:layout_height="386dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="128dp"
         android:maxHeight="350dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <View
         android:id="@+id/apprenticelist_divider"
@@ -61,7 +37,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="@string/benutzerListe"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"

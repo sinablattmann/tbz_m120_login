@@ -23,7 +23,6 @@
     <string name="benutzerListenBeschreibung">Diese Aktivität zeigt alle Benutzer innerhalb einer Liste</string>
     <string name="benutzerDatenBeschreibung">Diese Aktivität zeigt die Daten eines einzelnen Benutzers an</string>
     <string name="defaultFotoBeschreibung">Das ist das Bild für einen Benutzer der kein Foto definiert hat</string>
-    <string name="benutzerListe">Benutzer-Liste</string>
     <string name="buttonLogout">Abmelden</string>
     <string name="informationen">Informationen</string>
 </resources>

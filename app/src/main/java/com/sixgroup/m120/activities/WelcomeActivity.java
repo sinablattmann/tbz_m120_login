@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,17 +29,17 @@ public class WelcomeActivity extends AppCompatActivity implements DataAccess {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        ImageView imageViewPicture = findViewById(R.id.imageView);
-        UserDao userDao;
+        UserDao userDao = getDataAccess();
 
-        //set Dao
-        userDao = getDataAccess();
+
 
         //get the User that logged in
         Intent intent = getIntent();
         String email = intent.getStringExtra(getString(R.string.editTextEmail));
         User user = userDao.getByEmail(email);
 
+
+        ((TextView) findViewById(R.id.willkommen2)).setText(user.getVorname() + " " + user.getNachname());
     }
 
     //changes activity to "activity_login"

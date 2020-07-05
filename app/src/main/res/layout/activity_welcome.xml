@@ -10,27 +10,28 @@
         android:id="@+id/willkommen"
         android:layout_width="224dp"
         android:layout_height="56dp"
+        android:layout_marginTop="128dp"
         android:gravity="center"
         android:text="@string/willkommen"
         android:textColor="#000000"
         android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="276dp"
-        android:contentDescription="@string/pictureAltText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/account_circle"
-         />
 
+    <TextView
+        android:id="@+id/willkommen2"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/willkommen" />
 
     <Button
         android:id="@+id/buttonLogout"
@@ -38,14 +39,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
+        android:layout_marginBottom="196dp"
         android:background="@color/blueColor"
         android:onClick="goToLogin"
         android:text="@string/buttonLogout"
         android:textColor="@color/whiteColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/buttonLogout2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonLogout2"
@@ -53,13 +54,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
+        android:layout_marginBottom="196dp"
         android:background="@color/blueColor"
         android:onClick="goToList"
         android:text="@string/benutzerListe"
         android:textColor="@color/whiteColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonLogout"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.504" />
+        app:layout_constraintStart_toEndOf="@+id/buttonLogout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
