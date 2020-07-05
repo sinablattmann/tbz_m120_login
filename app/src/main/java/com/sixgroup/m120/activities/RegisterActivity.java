@@ -16,12 +16,12 @@ import com.sixgroup.m120.persistence.UserDao;
 
 public class RegisterActivity extends AppCompatActivity implements DataAccess {
 
-    EditText editTextFirstname;
-    EditText editTextLastname;
-    EditText editTextEmailRegister;
-    EditText editTextPasswordRegister;
-    EditText editTextPasswordConfirm;
-    Button buttonRegistrieren;
+    EditText firstName;
+    EditText lastName;
+    EditText email;
+    EditText password;
+    EditText passwordConfirm;
+    Button registerButton;
 
     private UserDao userDao;
 
@@ -32,8 +32,8 @@ public class RegisterActivity extends AppCompatActivity implements DataAccess {
         setContentView(R.layout.activity_register);
         userDao = getDataAccess();
 
-        buttonRegistrieren = findViewById(R.id.buttonRegistrieren);
-        buttonRegistrieren.setEnabled(true);
+        registerButton = findViewById(R.id.buttonRegister);
+        registerButton.setEnabled(true);
 
     }
 
@@ -43,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity implements DataAccess {
         if (dataIsValid()) {
             Intent intent = new Intent(this, WelcomeActivity.class);
             saveToDatabase();
+            intent.putExtra(getString(R.string.editTextEmail), email.getText().toString().trim());
 
             startActivity(intent);
         }
@@ -51,10 +52,10 @@ public class RegisterActivity extends AppCompatActivity implements DataAccess {
 
     public void saveToDatabase() {
 
-        String firstName = editTextFirstname.getText().toString().trim();
-        String lastName = editTextLastname.getText().toString().trim();
-        String email = editTextEmailRegister.getText().toString().trim();
-        String password = "" + editTextPasswordConfirm.getText().toString().trim().hashCode();
+        String firstName = this.firstName.getText().toString().trim();
+        String lastName = this.lastName.getText().toString().trim();
+        String email = this.email.getText().toString().trim();
+        String password = "" + passwordConfirm.getText().toString().trim().hashCode();
 
         userDao.insertUser(new User(firstName, lastName, email, password));
         finish();
@@ -66,36 +67,36 @@ public class RegisterActivity extends AppCompatActivity implements DataAccess {
         boolean isValid = true;
 
         //validates the firstname and gives an error
-        editTextFirstname = findViewById(R.id.editTextVorname);
-        String firstName = editTextFirstname.getText().toString().trim();
+        firstName = findViewById(R.id.editTextFirstName);
+        String firstName = this.firstName.getText().toString().trim();
         if (!nameIsValid(firstName)) {
-            editTextFirstname.setError("Der Vorname muss zwischen 1 und 50 Zeichen sein.");
+            this.firstName.setError("Der Vorname muss zwischen 1 und 50 Zeichen sein.");
             isValid = false;
         }
 
         //validates the lastname and gives an error
-        editTextLastname = findViewById(R.id.editTextNachname);
-        String lastName = editTextLastname.getText().toString().trim();
+        lastName = findViewById(R.id.editTextLastname);
+        String lastName = this.lastName.getText().toString().trim();
         if (!nameIsValid(lastName)) {
-            editTextLastname.setError("Der Nachname muss zwischen 1 und 50 Zeichen sein.");
+            this.lastName.setError("Der Nachname muss zwischen 1 und 50 Zeichen sein.");
             isValid = false;
         }
 
         //validates the email and gives an error
-        editTextEmailRegister = findViewById(R.id.editTextEmailRegister);
-        String email = editTextEmailRegister.getText().toString().trim();
+        email = findViewById(R.id.editTextEmailRegister);
+        String email = this.email.getText().toString().trim();
         if (!emailIsValid(email)) {
-            editTextEmailRegister.setError("Email muss ein korrektes Format enthalten (max.muster@test.com)");
+            this.email.setError("Email muss ein korrektes Format enthalten (max.muster@test.com)");
             isValid = false;
         }
 
         //validates the password and gives an error
-        editTextPasswordRegister = findViewById(R.id.editTextPasswortRegister);
-        editTextPasswordConfirm = findViewById(R.id.editTextPasswortBestaetigen);
-        String password = editTextPasswordRegister.getText().toString().trim();
-        String passwordConfirm = editTextPasswordConfirm.getText().toString().trim();
-        if (!controllPassword(password, passwordConfirm)) {
-            editTextPasswordConfirm.setError("Die beiden Passwörter stimmen nicht überein");
+        password = findViewById(R.id.editTextPasswortRegister);
+        passwordConfirm = findViewById(R.id.editTextConfirmPassword);
+        String password = this.password.getText().toString().trim();
+        String passwordConfirm = this.passwordConfirm.getText().toString().trim();
+        if (!checkPassword(password, passwordConfirm)) {
+            this.passwordConfirm.setError("Die beiden Passwörter stimmen nicht überein");
             isValid = false;
         }
 
@@ -130,7 +131,7 @@ public class RegisterActivity extends AppCompatActivity implements DataAccess {
     }
 
     //checks if the passwords are the same
-    public boolean controllPassword(String password1, String password2) {
+    public boolean checkPassword(String password1, String password2) {
         if (password1.equals(password2)) {
             return true;
         } else {

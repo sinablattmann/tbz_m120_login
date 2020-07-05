@@ -61,7 +61,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewzuRegistrieren"
+        android:id="@+id/textViewRegister"
         android:layout_width="102dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="154dp"

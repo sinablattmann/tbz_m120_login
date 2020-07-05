@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list_apprentice"
+    android:id="@+id/list_user"
     android:layout_width="match_parent"
     android:layout_height="120dp"
     android:contentDescription="@string/fragmentBeschreibung"
@@ -12,18 +12,18 @@
 
 
     <HorizontalScrollView
-        android:id="@+id/list_apprentice_fullNameScrollView"
+        android:id="@+id/list_user_fullNameScrollView"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="24dp"
         android:fillViewport="true"
-        app:layout_constraintStart_toEndOf="@+id/list_apprentice_userPhoto"
+        app:layout_constraintStart_toEndOf="@+id/list_user_userPhoto"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/list_apprentice_fullNameTextView"
+            android:id="@+id/list_user_fullNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="?android:attr/selectableItemBackground"
@@ -34,7 +34,7 @@
     </HorizontalScrollView>
 
     <HorizontalScrollView
-        android:id="@+id/list_apprentice_emailScrollView"
+        android:id="@+id/list_user_emailScrollView"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_marginStart="32dp"
@@ -42,10 +42,10 @@
         android:layout_marginBottom="24dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/list_apprentice_userPhoto">
+        app:layout_constraintStart_toEndOf="@+id/list_user_userPhoto">
 
         <TextView
-            android:id="@+id/list_apprentice_emailTextView"
+            android:id="@+id/list_user_emailTextView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?android:attr/selectableItemBackground"
@@ -55,7 +55,7 @@
     </HorizontalScrollView>
 
     <TextView
-        android:id="@+id/list_apprentice_userPhoto"
+        android:id="@+id/list_user_userPhoto"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginStart="8dp"

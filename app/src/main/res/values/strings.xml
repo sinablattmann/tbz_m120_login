@@ -8,7 +8,6 @@
     <string name="editTextEmail">Email</string>
     <string name="editTextPassword">Passwort</string>
     <string name="pictureAltText">Profile Picture</string>
-    <string name="fotoHochladen">Foto Hochladen</string>
     <string name="willkommen">Willkommen</string>
     <string name="benutzerListe">Benutzerliste</string>
     <string name="textViewZuRegistrieren">\ Kein Account?\nHier registrieren</string>

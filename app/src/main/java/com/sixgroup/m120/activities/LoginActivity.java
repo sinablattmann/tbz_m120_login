@@ -1,6 +1,7 @@
 package com.sixgroup.m120.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -29,28 +30,29 @@ public class LoginActivity extends AppCompatActivity implements DataAccess {
     }
 
     //changes activity to "activity_register"
-    public void goToRegisterActivity(View view){
-        Intent intent = new Intent (this, RegisterActivity.class);
+    public void goToRegisterActivity(View view) {
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
+
     //changes activity to "activity_welcome"
-    public void goToWelcomeActivity(Intent intent){
+    public void goToWelcomeActivity(Intent intent) {
         startActivity(intent);
     }
 
     public void login(View view) {
-        Intent intent = new Intent (this, WelcomeActivity.class);
+        Intent intent = new Intent(this, WelcomeActivity.class);
         EditText editTextEmail = findViewById(R.id.editTextEmail);
         EditText editTextPassword = findViewById(R.id.editTextPasswort);
 
         String password = editTextPassword.getText().toString();
         User user = userDao.getByEmail(editTextEmail.getText().toString());
-        if(user != null) {
-            if (("" + password.hashCode()).equals(user.getPasswort())) {
+        if (user != null) {
+            if (("" + password.hashCode()).equals(user.getPassword())) {
                 intent.putExtra(getString(R.string.editTextEmail), user.getEmail());
                 goToWelcomeActivity(intent);
             }
-        }else{
+        } else {
             editTextEmail.setError("Passwort oder Email ist falsch");
         }
     }

@@ -1,10 +1,8 @@
 package com.sixgroup.m120.adapter;
 
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,29 +13,24 @@ import com.sixgroup.m120.persistence.User;
 import java.util.List;
 
 import com.sixgroup.m120.R;
-//import com.sixgroup.m120.manager.ApprenticeImageViewManager;
-import com.sixgroup.m120.persistence.User;
 
-/**
- *
- */
+
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
-    private static final String TAG = "ApprenticeAdapter";
+    private static final String TAG = "UserAdapter";
 
-    private List<User> apprenticeDataset;
+    private List<User> userDataset;
     private OnListItemClickListener onItemClickListener;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public UserAdapter(List<User> apprenticeDataset, OnListItemClickListener onItemClickListener) {
-        this.apprenticeDataset = apprenticeDataset;
+    public UserAdapter(List<User> userDataset, OnListItemClickListener onItemClickListener) {
+        this.userDataset = userDataset;
         this.onItemClickListener = onItemClickListener;
     }
 
     // Create new views (invoked by the layout manager)
     @NonNull
     @Override
-    public UserViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_entry, parent, false);
@@ -50,11 +43,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        // - get element from apprentice dataset at this position
+        // - get element from user dataset at this position
         // - replace the contents of the view with that element
-        String firstName = apprenticeDataset.get(position).getVorname();
-        String lastName = apprenticeDataset.get(position).getNachname();
-        String email = apprenticeDataset.get(position).getEmail();
+        String firstName = userDataset.get(position).getFirstName();
+        String lastName = userDataset.get(position).getLastName();
+        String email = userDataset.get(position).getEmail();
 
         String initials = getInitials(firstName, lastName);
 
@@ -63,17 +56,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.initials.setText(initials);
     }
 
-    public String getInitials(String firstName, String lastName){
+    public String getInitials(String firstName, String lastName) {
         char firstLetter = firstName.toUpperCase().charAt(0);
         char secondLetter = lastName.toUpperCase().charAt(0);
 
         return firstLetter + "" + secondLetter;
     }
 
-    // Return the size of the apprentice dataset (invoked by the layout manager)
+    // Return the size of the user dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return apprenticeDataset.size();
+        return userDataset.size();
     }
 
     // Provide a reference to the views for each data item
@@ -88,9 +81,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
         UserViewHolder(View v, final OnListItemClickListener onItemclickListener) {
             super(v);
-            fullName = v.findViewById(R.id.list_apprentice_fullNameTextView);
-            email = v.findViewById(R.id.list_apprentice_emailTextView);
-            initials = v.findViewById(R.id.list_apprentice_userPhoto);
+            fullName = v.findViewById(R.id.list_user_fullNameTextView);
+            email = v.findViewById(R.id.list_user_emailTextView);
+            initials = v.findViewById(R.id.list_user_userPhoto);
 
             this.onItemClickListener = onItemclickListener;
             v.setOnClickListener(this);
@@ -122,7 +115,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             callItemClickListener();
         }
 
-        private void callItemClickListener(){
+        private void callItemClickListener() {
             onItemClickListener.onItemClick(getAdapterPosition());
         }
     }

@@ -1,6 +1,5 @@
 package com.sixgroup.m120.activities;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,44 +13,42 @@ import com.sixgroup.m120.persistence.User;
 import com.sixgroup.m120.R;
 import com.sixgroup.m120.persistence.UserDao;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class UserdataActivity extends AppCompatActivity implements DataAccess {
-    private static final String TAG = "ApprenticedataActivity";
+    private static final String TAG = "Userdataactivity";
 
-    // Apprenticedata which are shown
+    // Userdate which are shown
     private User selectedUser;
 
     /**
-     * Creates the view and displays it to the apprentice.
-     * Gets apprentice data out of bundle and displays it on the view
+     * Creates the view and displays it to the user.
+     * Gets user data out of bundle and displays it on the view
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_apprentice_data);
+        setContentView(R.layout.activity_user_data);
         getSupportActionBar().setTitle(R.string.informationen);
 
         // Database connection
-        UserDao apprenticeDao = getDataAccess();
+        UserDao userDao = getDataAccess();
 
-        TextView firstnameTextView = findViewById(R.id.apprenticedata_firstname);
-        TextView lastnameTextView = findViewById(R.id.apprenticedata_lastname);
-        TextView emailTextView = findViewById(R.id.apprenticedata_lastname2);
+        TextView firstnameTextView = findViewById(R.id.userdata_firstname);
+        TextView lastnameTextView = findViewById(R.id.userdata_lastname);
+        TextView emailTextView = findViewById(R.id.userdata_email);
 
         try {
-            // Fetch apprentice by given apprentice id in bundle
+            // Fetch user by given user id in bundle
             Bundle bundle = getIntent().getExtras();
-            int apprenticeID = bundle.getInt(UserListActivity.EXTRA_APPRENTICE_ID);
-            selectedUser = apprenticeDao.getById(apprenticeID);
+            int userID = bundle.getInt(UserListActivity.EXTRA_USER_ID);
+            selectedUser = userDao.getById(userID);
 
-            firstnameTextView.setText(selectedUser.getVorname());
-            lastnameTextView.setText(selectedUser.getNachname());
+            firstnameTextView.setText(selectedUser.getFirstName());
+            lastnameTextView.setText(selectedUser.getLastName());
             emailTextView.setText(selectedUser.getEmail());
 
         } catch (NullPointerException nullex) {
-            Log.e(TAG, nullex.getMessage() + " --- On getting bundle apprentice id");
+            Log.e(TAG, nullex.getMessage() + " --- On getting bundle user id");
         }
     }
 

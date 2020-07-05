@@ -2,11 +2,8 @@ package com.sixgroup.m120.activities;
 
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,7 +36,7 @@ public class WelcomeActivity extends AppCompatActivity implements DataAccess {
         User user = userDao.getByEmail(email);
 
 
-        ((TextView) findViewById(R.id.willkommen2)).setText(user.getVorname() + " " + user.getNachname());
+        ((TextView) findViewById(R.id.willkommen2)).setText(user.getFirstName() + " " + user.getLastName());
     }
 
     //changes activity to "activity_login"

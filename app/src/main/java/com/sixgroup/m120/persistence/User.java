@@ -14,25 +14,25 @@ public class User {
 
     //vorname is called firstname in the database
     @ColumnInfo(name="firstname")
-    private String vorname;
+    private String firstName;
 
     //nachname is called lastname in the database
     @ColumnInfo(name="lastname")
-    private String nachname;
+    private String lastName;
 
     private String email;
 
 
     //passwort is called password in the database
     @ColumnInfo(name="password")
-    private String passwort;
+    private String password;
 
     //constructor
-    public User(String vorname, String nachname, String email, String passwort) {
-        this.vorname = vorname;
-        this.nachname = nachname;
+    public User(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.passwort = passwort;
+        this.password = password;
     }
 
     //getters and setters
@@ -44,20 +44,20 @@ public class User {
         this.id = id;
     }
 
-    public String getVorname() {
-        return vorname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setVorname(String vorname) {
-        this.vorname = vorname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getNachname() {
-        return nachname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -68,12 +68,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPasswort() {
-        return passwort;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswort(String passwort) {
-        this.passwort = passwort;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

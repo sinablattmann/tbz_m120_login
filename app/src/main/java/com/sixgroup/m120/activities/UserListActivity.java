@@ -2,8 +2,6 @@ package com.sixgroup.m120.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,7 +20,7 @@ import java.util.List;
 public class UserListActivity extends AppCompatActivity implements UserAdapter.OnListItemClickListener, DataAccess {
 
 
-    public static final String EXTRA_APPRENTICE_ID = "ch.noseryoung.lernendeverwaltung.activity.EXTRA_APPRENTICE_ID";
+    public static final String EXTRA_USER_ID = "ch.noseryoung.lernendeverwaltung.activity.EXTRA_USER_ID";
 
     //Database connection
     public static UserDao userDao;
@@ -49,7 +47,7 @@ public class UserListActivity extends AppCompatActivity implements UserAdapter.O
         // Loads list from database
         users = userDao.getAll();
 
-        RecyclerView recyclerView = findViewById(R.id.apprenticelist_apprenticesList);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView_userList);
 
         // Uses this setting to improve performance if the changes are known
         // in content does not change the layout size of the RecyclerView
@@ -61,7 +59,7 @@ public class UserListActivity extends AppCompatActivity implements UserAdapter.O
         recyclerView.setLayoutManager(layoutManager);
 
         // specifies an adapter
-        UserAdapter mAdapter = new UserAdapter(users, this/*, apprenticeImageViewManager*/);
+        UserAdapter mAdapter = new UserAdapter(users, this);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -69,7 +67,7 @@ public class UserListActivity extends AppCompatActivity implements UserAdapter.O
     public void onItemClick(int position) {
         User user = users.get(position);
         Intent intent = new Intent(this, UserdataActivity.class);
-        intent.putExtra(EXTRA_APPRENTICE_ID, user.getId());
+        intent.putExtra(EXTRA_USER_ID, user.getId());
         startActivity(intent);
     }
 
